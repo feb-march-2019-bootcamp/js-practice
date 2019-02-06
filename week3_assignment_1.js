@@ -59,21 +59,60 @@ library.addBook(
   )
 );
 
-library.addBook(new Book(
-    '65543-324324',
-    'JavaScript the good parts',
-    400,
-    new Author('Ali', 'Younis')
-));
+// library.addBook(new Book(
+//     '65543-324324',
+//     'JavaScript the good parts',
+//     400,
+//     new Author('Ali', 'Younis')
+// ));
 
-library.addBook(new Book(
+// library.addBook(new Book(
+//     '54332-654643',
+//     'Computer networking',
+//     1000,
+//     new Author('Omar', 'Jamal')
+// ));
+
+const library2 = new Library();
+
+const lib = {
+    books: [],
+    cart: [],
+    addBook(book) {
+        this.books.push(book)
+    },
+    removeBook(index) {
+        this.books.slice(index, 1)
+    },
+    listBooks() {
+        // ....
+    }
+}
+
+const lib2 = {
+    books: [],
+    cart: [],
+    addBook(book) {
+        this.books.push(book)
+    },
+    removeBook(index) {
+        this.books.splice(index, 1)
+    },
+    listBooks() {
+        // ....
+    }
+}
+
+lib.addBook(new Book(
     '54332-654643',
     'Computer networking',
     1000,
     new Author('Omar', 'Jamal')
-));
+))
 
 
+// console.log(lib instanceof Library);
+// console.log(library instanceof Library);
 // library.addBookToCart(1);
 
 // console.log(library.cart);
@@ -102,4 +141,53 @@ function listBooksInLibrary() {
         console.log(`${i}: ${bookIsbnsInLibrary[i]}, ${bookTitlesInLibrary[i]}`)
     }
 }
+
+class School 
+{
+    constructor() {
+        this.teachers = [];
+        this.students = [];
+    }
+
+    /**
+     * 
+     * @param {Teacher} teacher 
+     */
+    addTeacher(teacher) {
+        this.teachers.push(teacher);
+    }
+
+    fireTeacher(index) {
+        this.teachers.splice(index, 1);
+    }
+
+    registerStudent(student) {
+        this.students.push(student);
+    }
+
+    fireStudent(index) {
+        this.students.splice(index, 1);
+    }
+}
+
+class Student
+{
+    constructor(firstName, lastName, stage, college) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.stage = stage;
+        this.college = college;
+    }
+}
+
+class Teacher
+{
+    constructor(firstName, lastName, subject) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.subject = subject;
+    }
+}
+
+const school = new School();
 
