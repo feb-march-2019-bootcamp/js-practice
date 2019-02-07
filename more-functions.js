@@ -3,10 +3,13 @@ function sumAll() {
 }
 
 function multiplyAll() {
-  return [...arguments].map(x => Number(x) || 1).reduce((prev, x) => prev * x);
+  return [...arguments].map(function(x) {
+      return Number(x) || 1
+  })
+  .reduce((prev, x) => prev * x);
 }
 
-console.log(multiplyAll(2, 3, 5, 10, "b"));
+// console.log(multiplyAll(2, 3, 5, 10, "b"));
 
 /**
  *
@@ -33,4 +36,42 @@ function numberOccurances(input) {
     // }, []);
 }
 
-console.log(numberOccurances("2410023b8"));
+// const printText = function(printFunc) {
+//     return function(text) {
+//         return printFunc(text)
+//     }
+// };
+
+const printText = printFunc => text => printFunc(text);
+
+const printTextInConsole = printText(console.log);
+
+printTextInConsole('Hello currying');
+
+
+function map(func, inputArray) {
+    const result = [];
+    for (let i = 0; i < inputArray.length; i++) {
+        result.push( func(inputArray[i], i, inputArray) )
+    }
+    return result;
+}
+
+// console.log( map((x, i, a) => [x, i, a], ['abc', 'xyz']) );
+
+// console.log( ['abc', 'xyz'].map((x, i, a) => [x, i, a]) )
+
+function filter(func, inputArray) {
+    const result = [];
+    for (let i = 0; i < inputArray.length; i++) {
+        if (func(inputArray[i], i, inputArray)) {
+            result.push(inputArray[i])
+        }
+    }
+    return result;
+}
+
+const arr = [1,2,3,4,5,7,8,'abc'];
+
+console.log(arr.filter(Number))
+console.log(filter(Number, arr))
