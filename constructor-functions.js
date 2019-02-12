@@ -55,7 +55,7 @@ Object.prototype.getFoo = function() {
 console.log("S Before: ", s)
 
 // Breaking the proto chain
-s.__proto__ = {getFoo() {return 'baz'}}
+// s.__proto__ = {getFoo() {return 'baz'}}
 
 console.log("S after: ", s)
 console.log('Has own property', s.hasOwnProperty('getFoo'))
