@@ -7,12 +7,12 @@ const appendTodoToUl = function(texts, ul, noUnderline = false) {
     // ul.classList.add('no-underline')
 
     // or replace
-    ul.classList.replace('with-underline', 'no-underline')
+    ul.classList.replace("with-underline", "no-underline");
 
     // logs the classes of ul
-    console.log(ul.getAttribute('class'))
-    console.log(ul.className)
-}
+    console.log(ul.getAttribute("class"));
+    console.log(ul.className);
+  }
 
   [texts]
     .flat()
@@ -32,6 +32,12 @@ const appendTodoToUl = function(texts, ul, noUnderline = false) {
       a.style.backgroundColor = `rgba(${(i * 90) % 256}, 
                 ${(i * 60) % 256}, ${(i * 80) % 256}, .5)`;
 
+      a.addEventListener("click", function(e) {
+
+        // don't visit the link (default action)
+        e.preventDefault();
+      });
+
       if (text.length <= 4) {
         li.setAttribute("class", "green-text");
       } else if (text.length < 8) {
@@ -39,6 +45,15 @@ const appendTodoToUl = function(texts, ul, noUnderline = false) {
       } else {
         li.setAttribute("class", "red-text");
       }
+
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = 'X'
+
+      deleteButton.addEventListener('click', () => {  
+        li.remove();
+      })
+
+      li.appendChild(deleteButton);
 
       return li;
     })
@@ -52,3 +67,12 @@ appendTodoToUl(
   appUl,
   true
 );
+
+const newTodoText = document.getElementById('todoText');
+const addBtn = document.getElementById('addBtn')
+addBtn.addEventListener('click', () => {
+    const text = newTodoText.value;
+    newTodoText.value = '';
+    
+    appendTodoToUl(text, appUl);
+})
