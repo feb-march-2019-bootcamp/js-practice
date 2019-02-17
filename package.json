@@ -11,7 +11,8 @@
   "description": "",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "array-flat-polyfill": "^1.0.0"
+    "array-flat-polyfill": "^1.0.0",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
     "cssnano": "^4.1.8",
