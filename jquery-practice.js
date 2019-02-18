@@ -29,9 +29,12 @@ $(() => {
                 // Remove parent without jQuery
                 // e.target.parentNode.remove()
                 console.log(this === e.target); // true because of the normal function
-                $(this)
-                  .parent()
-                  .remove();
+                const li = $(this).parent()
+
+                li.animate({opacity: 0, marginLeft: '20px'}, 1000, () => {
+                    // remove after the animation completed
+                    li.remove();
+                })
               })
           );
       });
