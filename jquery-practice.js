@@ -1,9 +1,57 @@
-import $ from 'jquery';
+import $ from "jquery";
 
-const btn = $('#app .btn');
+// window.addEventListener('load', () => {...})
+// or with jQuery
+$(() => {
+  const appUl = $("#app ul");
 
-btn.html('New buttons')
+  const appendTodoToUl = function(texts, ul, noUnderline = false) {
+    const items = [texts]
+      .flat()
+      .filter(Boolean)
+      .map((text, i) => {
+        let className = "green-text";
+        if (text.length > 4) {
+          className = "yellow-text";
+        }
+        if (text.length >= 8) {
+          className = "red-text";
+        }
 
-btn.attr('class', btn.attr('class') + ' red')
+        return $("<li>")
+          .text(text)
+          .css({ fontSize: 15 + i * 5 })
+          .addClass(className)
+          .append(
+            $("<button>")
+              .text("X")
+              .on("click", function(e) {
+                // Remove parent without jQuery
+                // e.target.parentNode.remove()
+                console.log(this === e.target); // true because of the normal function
+                $(this)
+                  .parent()
+                  .remove();
+              })
+          );
+      });
 
-console.log(btn);
+    $(ul).append(items);
+  };
+
+  appendTodoToUl(
+    ["Mohammed", "Ali", "Shakhawan", "Najiba", null, "", undefined, "Omar"],
+    appUl,
+    true
+  );
+
+  const newTodoText = $("#todoText");
+
+  $('#addBtn').on("click", () => {
+    const text = newTodoText.val();
+    newTodoText.val('');
+
+    appendTodoToUl(text, appUl);
+  });
+
+});

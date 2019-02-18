@@ -8,7 +8,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "array-flat-polyfill": "^1.0.0",
@@ -17,5 +16,14 @@
   "devDependencies": {
     "cssnano": "^4.1.8",
     "typescript": "^3.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feb-march-2019-bootcamp/js-practice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feb-march-2019-bootcamp/js-practice/issues"
+  },
+  "homepage": "https://github.com/feb-march-2019-bootcamp/js-practice#readme",
+  "description": ""
 }
