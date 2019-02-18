@@ -52,6 +52,14 @@ $(() => {
     newTodoText.val('');
 
     appendTodoToUl(text, appUl);
-  });
 
+    $('li').each((i, el) => {
+        console.log(el)
+    });
+
+    // same work, but el and i replaced
+    Array.prototype.slice.call($('li')).forEach((el, i) => {
+        console.log(el)
+    })
+  });
 });
