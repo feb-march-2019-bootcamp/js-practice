@@ -1,4 +1,5 @@
 import $ from "jquery";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // window.addEventListener('load', () => {...})
 // or with jQuery
@@ -65,4 +66,49 @@ $(() => {
         console.log(el)
     })
   });
+
+
+  $('#data-table').on('click', '.delete-btn', e => {
+    $(e.target).closest('tr').remove();
+  })
+
+  $('#data-table').on('click', '.edit-btn', e => {
+    console.log('edit')
+  })
+
+  $('#data-table').append(`<tr>
+  <td>Mohammed</td>
+  <td>mail@mail.com</td>
+  <td>
+      <button class="delete-btn btn btn-danger">Delete</button>
+      <button class="edit-btn btn btn-warning">Edit</button>
+  </td>
+</tr>
+
+<tr>
+  <td>Shakhawan</td>
+  <td>shak@mail.com</td>
+  <td>
+      <button class="delete-btn btn btn-danger">Delete</button>
+      <button class="edit-btn btn btn-warning">Edit</button>
+  </td>
+</tr>`)
+
+  $('#data-table').append(`<tr>
+  <td>Mohammed</td>
+  <td>mail@mail.com</td>
+  <td>
+      <button class="delete-btn btn btn-danger">Delete</button>
+      <button class="edit-btn btn btn-warning">Edit</button>
+  </td>
+</tr>
+
+<tr>
+  <td>Shakhawan</td>
+  <td>shak@mail.com</td>
+  <td>
+      <button class="delete-btn btn btn-danger">Delete</button>
+      <button class="edit-btn btn btn-warning">Edit</button>
+  </td>
+</tr>`)
 });
