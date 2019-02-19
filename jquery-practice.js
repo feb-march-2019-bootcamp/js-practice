@@ -73,7 +73,15 @@ $(() => {
   })
 
   $('#data-table').on('click', '.edit-btn', e => {
-    console.log('edit')
+    const data = $(e.target).closest('tr').find('td');
+
+    const form = $('#template-form').clone();
+
+    form.find('input#name').val( data[0].innerText );
+    form.find('input#email').val( $(data[1]).text() );
+
+
+    $(e.target).closest('div').prepend(form);
   })
 
   $('#data-table').append(`<tr>
